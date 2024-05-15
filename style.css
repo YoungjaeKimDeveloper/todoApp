@@ -1,3 +1,6 @@
 .filtered {
   display: none !important;
 }
+.done {
+  text-decoration: line-through;
+}

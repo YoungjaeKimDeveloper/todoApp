@@ -54,7 +54,9 @@ const generateTemplate = (todo) => {
     class="list-group-item d-flex justify-content-between align-items-center"
   >
     <span>${todo}</span>
+    <i class="fa-solid fa-check checkbox"></i>
     <i class="far fa-trash-alt delete"></i>
+    
   </li>`;
 };
 addForm.addEventListener("submit", (e) => {
@@ -104,8 +106,15 @@ const filterTodo = (term) => {
     .forEach((todo) => todo.classList.remove("filtered"));
 };
 
-const form = document.querySelector(".search");
+const form = document.querySelector(".search input");
 form.addEventListener("input", (e) => {
   const searching = e.target.value;
   filterTodo(searching);
+});
+
+list.addEventListener("click", (e) => {
+  if (e.target.classList.contains("checkbox")) {
+    const todoItem = e.target.parentElement;
+    todoItem.classList.toggle("done");
+  }
 });
